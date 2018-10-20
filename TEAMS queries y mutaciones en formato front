@@ -1,5 +1,5 @@
 query TeamByPlayer($player_name:String!){
-            equipoByPlayer(player_name:$player_name){
+            teamByPlayer(player_name:$player_name){
                 name
                 id
           }  
