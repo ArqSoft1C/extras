@@ -1,0 +1,138 @@
+query getAllMatches{
+  allMatches{
+    id
+    court_id
+    team_home_id
+    team_away_id
+    score_home
+    score_away
+    played
+    date 
+  }
+}
+
+////////////////////////////
+////////////////////////////
+////////////////////////////
+
+query GetMatchById(
+    $id: Int!
+){
+  matchById(
+  id:$id
+  ){
+    id
+    court_id
+    team_home_id
+    team_away_id
+    score_home
+    score_away
+    played
+    date
+  }
+}
+
+////////////////////////////
+////////////////////////////
+////////////////////////////
+
+query GetMatchByTeam(
+    $team: String!
+){
+  matchByTeam(
+  team:$team
+  ){
+    id
+    court_id
+    team_home_id
+    team_away_id
+    score_home
+    score_away
+    played
+    date
+  }
+}
+
+////////////////////////////
+////////////////////////////
+////////////////////////////
+
+mutation CreateMatch(
+    $court_id: Int!
+    $team_home_id: String!
+    $team_away_id: String!
+    $score_home: Int
+    $score_away: Int
+    $played: Boolean
+    $date: String!
+){
+  createMatch(
+    match:{
+      court_id: $court_id
+      team_home_id: $team_home_id
+      team_away_id: $team_away_id
+      score_home: $score_home
+      score_away: $score_away
+      played: $played
+      date: $date
+    }
+  ){
+    id
+    court_id
+    team_home_id
+    team_away_id
+    score_home
+    score_away
+    played
+    date
+  }
+}
+
+////////////////////////////
+////////////////////////////
+////////////////////////////
+
+mutation UpdateMatch(
+    $court_id: Int!
+    $team_home_id: String!
+    $team_away_id: String!
+    $score_home: Int
+    $score_away: Int
+    $played: Boolean
+    $date: String!
+  	$id: Int!
+){
+  updateMatch(
+    match:{
+      court_id: $court_id
+      team_home_id: $team_home_id
+      team_away_id: $team_away_id
+      score_home: $score_home
+      score_away: $score_away
+      played: $played
+      date: $date
+    },
+    id: $id
+  ){
+    id
+    court_id
+    team_home_id
+    team_away_id
+    score_home
+    score_away
+    played
+    date
+  }
+}
+
+////////////////////////////
+////////////////////////////
+////////////////////////////
+
+mutation DeleteMatch(
+  	$id: Int!
+){
+  deleteMatch(
+    id: $id
+  )
+}
