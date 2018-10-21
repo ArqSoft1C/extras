@@ -1,0 +1,23 @@
+query {
+  allMessages {
+    user1
+    }
+}
+
+
+mutation {
+  createMessage(message: {
+    user1: "Arquitectura de Software"
+    user2: "er"
+    subject: "Jeisson"
+    content:"hi"
+  }) {
+    user1
+  }
+}
+
+
+
+mutation {
+  deleteMessage(code: "string")
+}
