@@ -4,3 +4,13 @@ query TeamByPlayer($player_name:String!){
                 id
           }  
         }
+
+//////////////////
+//////////////////
+//////////////////
+
+mutation AddPlayerToTeam($id:String!, $player_name:String! ){
+  addPlayerToTeam(id:$id, player_name: $player_name){
+    squad
+  }
+}
