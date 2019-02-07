@@ -45,3 +45,50 @@ services:
             - login-db
         links:
             - login-db
+    courts-ms:
+      image: dehormaza45/courts  
+      ports:
+        - "4005:4005"
+      depends_on:
+        - courts-db
+    courts-db:
+      image: mysql:5.7
+      environment:
+        MYSQL_ROOT_PASSWORD: 12345678
+        MYSQL_DATABASE: courts-db
+        MYSQL_USER: root
+        MYSQL_PASSWORD: 12345678
+        MYSQL_HOST: courts-db
+      ports:
+        - "3306:3306"
+    messages-ms:
+      image: dehormaza45/messages
+      depends_on:
+        - mongo-db
+      links:
+        - mongo-db
+      ports:
+        - "4003:4003"
+    mongo-db:
+      image: mongo
+      ports:
+        - "27017:27017"
+      volumes:
+        - "mongodata:/data/db"
+    teams-ms:
+      image: dehormaza45/teams
+      command: python manage.py runserver 0.0.0.0:4002
+      expose:
+        - "4002"
+      ports:
+        - "4002:4002"
+      links:
+      - teams-db
+
+    teams-db:
+      image: mongo
+      command: mongod --port 27020
+      volumes:
+          - "mongodata:/data/db"
+      ports:
+        - "27020:27020"    
